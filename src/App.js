@@ -4,7 +4,10 @@ import Header from './components/Header';
 import Categories from './components/Categories';
 import Sort from './components/Sort';
 import PizzaBlock from './components/PizzaBlock';
+
 import Fullscrean from './components/Fullscrean';
+
+import clothes from './assets/clothes.json';
 
 import './scss/app.scss';
 
@@ -19,10 +22,11 @@ function App() {
             <Categories />
             <Sort />
           </div>
-          <h2 className="content__title">Все пиццы</h2>
+          <h2 className="content__title">Весь ассортимент</h2>
           <div className="content__items">
-            <PizzaBlock title="Мексиканская" price={350} />
-            <PizzaBlock title="Бургер" price={250} />
+            {clothes.map((clothe) => (
+              <PizzaBlock key={clothe.id} {...clothe} />
+            ))}
           </div>
         </div>
       </div>
