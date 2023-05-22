@@ -7,11 +7,17 @@ import PizzaBlock from './components/PizzaBlock';
 
 import Fullscrean from './components/Fullscrean';
 
-import clothes from './assets/clothes.json';
-
 import './scss/app.scss';
 
 function App() {
+  const [clothes, setСlothes] = React.useState([]);
+
+  React.useEffect(() => {
+    fetch('https://646888d4e99f0ba0a826b93b.mockapi.io/clothes')
+      .then((res) => res.json())
+      .then((arr) => setСlothes(arr));
+  }, []);
+
   return (
     <div className="wrapper">
       <Header />

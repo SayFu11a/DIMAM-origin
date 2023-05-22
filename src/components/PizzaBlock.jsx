@@ -5,11 +5,7 @@ function PizzaBlock({ title, price, id, imageUrl, types, sizes, category, rating
 
   return (
     <div className="pizza-block">
-      <img
-        className="pizza-block__image"
-        src="https://af.attachmail.ru/cgi-bin/readmsg/01.jpg?x-email=sgishlakaev@mail.ru&rid=3091199951364682376027155999643968389736&&id=16839174230627941295%3B0%3B1&project=cloud&x-email=sgishlakaev%40mail.ru"
-        alt="Pizza"
-      />
+      <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
       <h4 className="pizza-block__title">{title}</h4>
       <div className="pizza-block__selector">
         <li>Размеры</li>
