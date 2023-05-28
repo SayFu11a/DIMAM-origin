@@ -1,16 +1,21 @@
+import { Link } from 'react-router-dom';
+
 function Header() {
   return (
     <div className="header">
       <div className="container">
-        <div className="header__logo">
-          <img
-            width="170"
-            src="https://af.attachmail.ru/cgi-bin/readmsg/vertical_tagline_on_white_by_logaster+%281%29.png?x-email=sgishlakaev@mail.ru&rid=35132290794895985392893406027538775355&&id=16828681181496489595%3B0%3B1&project=cloud&x-email=sgishlakaev%40mail.ru"
-            alt="Pizza logo"
-          />
-        </div>
+        <Link to="/">
+          <div className="header__logo">
+            <img
+              width="170"
+              src="https://af.attachmail.ru/cgi-bin/readmsg/vertical_tagline_on_white_by_logaster+%281%29.png?x-email=sgishlakaev@mail.ru&rid=35132290794895985392893406027538775355&&id=16828681181496489595%3B0%3B1&project=cloud&x-email=sgishlakaev%40mail.ru"
+              alt="Pizza logo"
+            />
+          </div>
+        </Link>
+
         <div className="header__cart">
-          <a href="/cart.html" className="button button--cart">
+          <Link to="/cart" className="button button--cart">
             <span>520 ₽</span>
             <div className="button__delimiter"></div>
             <svg
@@ -42,7 +47,7 @@ function Header() {
               />
             </svg>
             <span>3</span>
-          </a>
+          </Link>
         </div>
       </div>
     </div>
