@@ -19,7 +19,14 @@ body {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column; 
+
+  @media (max-width: 645px){
+    // width: calc(100vw - 30px);
+    // margin: 15px auto;
+  }
 }
+
+
 
 .content {
   padding: 40px 0;
@@ -29,15 +36,33 @@ body {
   }
 
   &__items {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 11px;
+
+    @media (max-width: 1400px) {
+    grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 1060px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 730px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 
   &__top {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    
+    @media (max-width: 880px) {
+      flex-direction: column-reverse;
+    }
+    
   }
 }
 
@@ -53,12 +78,36 @@ body {
     }
   }
 }
+@media (max-width: 1336px) {
 
+  .categories{
+    margin-top: 20px;
+    width:  100%;
+    overflow: auto;
+
+    ul{
+      width: 785px;
+      li{
+        white-space: nowrap; 
+      }
+    }
+  }
+  .sort{
+    padding-left: 20px;
+    b{
+      display: none;
+    }
+  }
+}
 .cart {
   &__top {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  &__items{
+    display: block;
   }
 
   .content__title {
@@ -317,6 +366,13 @@ body {
 
 .fullscreen {
   background: url('https://af.attachmail.ru/cgi-bin/readmsg/_A5A8604.jpg?x-email=sgishlakaev@mail.ru&rid=126370641722110383235944844222395556622&&id=16839198100842551798%3B0%3B1&project=cloud&x-email=sgishlakaev%40mail.ru')  0 15%/100% auto no-repeat fixed;
+  
+  @media (max-width: 788px) {
+  background: url('https://af.attachmail.ru/cgi-bin/readmsg/_A5A8493.jpg?x-email=sgishlakaev@mail.ru&rid=3890943262340669931342185865875049188&&id=16874286732146070047%3B0%3B1&project=cloud&x-email=sgishlakaev%40mail.ru') center/cover no-repeat fixed;
+  background-position: 50% 0px;
+  
+}
+
   min-height: 100vh;
   background-color: #666;
   display: -webkit-box;

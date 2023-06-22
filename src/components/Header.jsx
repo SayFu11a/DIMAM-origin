@@ -9,7 +9,7 @@ function Header() {
             <img
               width="170"
               src="https://af.attachmail.ru/cgi-bin/readmsg/vertical_tagline_on_white_by_logaster+%281%29.png?x-email=sgishlakaev@mail.ru&rid=35132290794895985392893406027538775355&&id=16828681181496489595%3B0%3B1&project=cloud&x-email=sgishlakaev%40mail.ru"
-              alt="Pizza logo"
+              alt="clothes logo"
             />
           </div>
         </Link>

@@ -1,16 +1,26 @@
 @import '../variables';
 
-.pizza-block {
+.clothes-block {
   width: 280px;
   text-align: center;
+  margin: 0 auto;
   margin-bottom: 65px;
 
-  &:not(:nth-of-type(4n)) {
-    margin-right: 35px;
+
+  @media (max-width: 1060px) {
+    width: 90%;
   }
+
+  @media (max-width: 730px) {
+    width: 100%;
+  }
+  
 
   &__image {
     width: 260px;
+    @media (max-width: 730px) {
+      width: 100%;
+    }
   }
 
   &__title {
@@ -57,6 +67,11 @@
     align-items: center;
     justify-content: space-between;
     margin-top: 20px;
+
+    @media (max-width: 323px) {
+      flex-direction: column;
+    }
+    
   }
 
   &__price {
@@ -64,5 +79,11 @@
     font-size: 22px;
     line-height: 27px;
     letter-spacing: 0.015em;
+    @media (max-width: 323px) {
+      margin-bottom: 10px;
+      .button--adaptive{
+        width: 100%;
+      }
+    }
   }
 }

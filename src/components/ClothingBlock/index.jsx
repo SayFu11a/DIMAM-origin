@@ -4,10 +4,10 @@ function ClothingBlock({ title, price, id, imageUrl, types, sizes, category, rat
   const [activeSize, setActiveSize] = React.useState(0);
 
   return (
-    <div className="pizza-block">
-      <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
-      <h4 className="pizza-block__title">{title}</h4>
-      <div className="pizza-block__selector">
+    <div className="clothes-block">
+      <img className="clothes-block__image" src={imageUrl} alt="clothes" />
+      <h4 className="clothes-block__title">{title}</h4>
+      <div className="clothes-block__selector">
         <li>Размеры</li>
         <ul>
           {sizes.map((size, i) => (
@@ -20,9 +20,9 @@ function ClothingBlock({ title, price, id, imageUrl, types, sizes, category, rat
           ))}
         </ul>
       </div>
-      <div className="pizza-block__bottom">
-        <div className="pizza-block__price">от {price} ₽</div>
-        <button className="button button--outline button--add">
+      <div className="clothes-block__bottom">
+        <div className="clothes-block__price">от {price} ₽</div>
+        <button className="button button--outline button--add button--adaptive">
           <svg
             width="12"
             height="12"
