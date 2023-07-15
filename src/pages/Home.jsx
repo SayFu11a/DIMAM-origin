@@ -8,8 +8,11 @@ import Pagination from '../components/Pagination';
 import Search from '../components/Search';
 
 import Fullscrean from '../components/Fullscrean';
+import { AppContext } from '../App';
 
-const Home = ({ searchValue, setSearchValue }) => {
+const Home = () => {
+  const { searchValue, setSearchValue } = React.useContext(AppContext);
+
   const [clothes, setСlothes] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const [categoryId, setCategoryId] = React.useState(0);
