@@ -1,4 +1,7 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { setCategoryId } from '../redux/slices/filterSlice';
 
 import Categories from '../components/Categories';
 import Sort from '../components/Sort';
@@ -11,23 +14,31 @@ import Fullscrean from '../components/Fullscrean';
 import { AppContext } from '../App';
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const { categoryId, sort } = useSelector((state) => state.filter);
+  const typeSort = sort.sortProperty;
+
   const { searchValue, setSearchValue } = React.useContext(AppContext);
 
   const [clothes, setСlothes] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
-  const [categoryId, setCategoryId] = React.useState(0);
+  // const [categoryId, setCategoryId] = React.useState(0);
   const [currentPage, setCurrentPage] = React.useState(1);
-  const [typeSort, setTypeSort] = React.useState({
-    name: 'популярности',
-    sortProperty: 'rating',
-  });
+  // const [typeSort, setTypeSort] = React.useState({
+  //   name: 'популярности',
+  //   sortProperty: 'rating',
+  // });
+
+  const onClickCatigory = (id) => {
+    dispatch(setCategoryId(id));
+  };
 
   React.useEffect(() => {
     setIsLoading(true);
 
     const category = categoryId > 0 ? `category=${categoryId}` : '';
     const search = searchValue ? `&search=${searchValue}` : '';
-    const sort = typeSort.sortProperty;
+    const sort = typeSort;
 
     fetch(
       `https://646888d4e99f0ba0a826b93b.mockapi.io/clothes?page=${currentPage}&limit=4&${category}&sortBy=${sort}${search}`,
@@ -48,10 +59,10 @@ const Home = () => {
       <div className="content">
         <div className="container">
           <div className="content__top">
-            <Categories value={categoryId} onClickCatigory={(i) => setCategoryId(i)} />
+            <Categories value={categoryId} onClickCatigory={onClickCatigory} />
             <Search searchValue={searchValue} setSearchValue={setSearchValue} />
 
-            <Sort activeSort={typeSort} setActiveSort={setTypeSort} />
+            <Sort />
           </div>
           <div className="serch-title_block">
             <h2 className="content__title">Весь ассортимент </h2>

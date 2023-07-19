@@ -1,16 +1,21 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux'; // импортируем из библеотеки react-redux useSelector, useDispatch
+import { setTypeSort } from '../redux/slices/filterSlice';
 
-function Sort({ activeSort, setActiveSort }) {
+const list = [
+  { name: 'популярности (DESC)', sortProperty: 'rating&order=desc' },
+  { name: 'популярности (ASC)', sortProperty: 'rating' },
+  { name: 'цене (DESC)', sortProperty: 'price&order=desc' },
+  { name: 'цене (ASC)', sortProperty: 'price' },
+  { name: 'алфавиту (DESC)', sortProperty: 'title&order=desc' },
+  { name: 'алфавиту (ASC)', sortProperty: 'title' },
+];
+
+function Sort() {
+  const dispatch = useDispatch(); // получаем функцию котораая будет передавать нам в редакс действие.
+  const sort = useSelector((state) => state.filter.sort); // вытаскиваем из store.js объект sort
+
   const [open, setOpen] = React.useState(false);
-
-  const list = [
-    { name: 'популярности (DESC)', sortProperty: 'rating&order=desc' },
-    { name: 'популярности (ASC)', sortProperty: 'rating' },
-    { name: 'цене (DESC)', sortProperty: 'price&order=desc' },
-    { name: 'цене (ASC)', sortProperty: 'price' },
-    { name: 'алфавиту (DESC)', sortProperty: 'title&order=desc' },
-    { name: 'алфавиту (ASC)', sortProperty: 'title' },
-  ];
 
   const rotate = { transform: 'rotate(180deg)' };
 
@@ -30,7 +35,7 @@ function Sort({ activeSort, setActiveSort }) {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span onClick={() => setOpen(!open)}>{activeSort.name}</span>
+        <span onClick={() => setOpen(!open)}>{sort.name}</span>
       </div>
       {open && (
         <div className="sort__popup">
@@ -38,9 +43,9 @@ function Sort({ activeSort, setActiveSort }) {
             {list.map((obj, index) => (
               <li
                 key={index}
-                className={activeSort.sortProperty === obj.sortProperty ? 'active' : ''}
+                className={sort.sortProperty === obj.sortProperty ? 'active' : ''}
                 onClick={() => {
-                  setActiveSort(obj);
+                  dispatch(setTypeSort(obj));
                   setOpen(!open);
                 }}>
                 {obj.name}
