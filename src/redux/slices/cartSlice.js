@@ -16,7 +16,9 @@ const cartSlice = createSlice({
       //    }, 0);
       // },
       addItem(state, action) {
-         const findItem = state.items.find((obj) => obj.id === action.payload.id); // ишем объект у которого id равен
+         const findItem = state.items.find(
+            (obj) => obj.id === action.payload.id && obj.size === action.payload.size,
+         ); // ишем объект у которого id равен
 
          if (findItem) {
             findItem.count++; // найденному объекту делаем count++ // если этот участок кода отрабатывает значит у нас одинаковые пиццы и мы у них увеличиваем caunt на +1
@@ -32,10 +34,25 @@ const cartSlice = createSlice({
          }, 0);
       },
       removeItem(state, action) {
-         state.items = state.items.filter((obj) => obj.id !== action.payload); // тут будем передавать id
+         // const countNone = (obj) => obj.id !== action.payload.id;
+         // state.items = state.items.filter((obj) => {
+         //    countNone(obj);
+         //    console.log(countNone(obj), 'countNone(obj)');
+         // }); // тут будем передавать id
+         // console.log(state.items, 'state.items');
+
+         const findItem = state.items.find(
+            (obj) => obj.id === action.payload.id && obj.size === action.payload.size,
+         ); // ишем объект у которого id равен
+
+         if (findItem) {
+            findItem.count = 0;
+         }
       },
       minusItem(state, action) {
-         const findItem = state.items.find((obj) => obj.id === action.payload); // ишем объект у которого id равен
+         const findItem = state.items.find(
+            (obj) => obj.id === action.payload.id && obj.size === action.payload.size,
+         ); // ишем объект у которого id равен
 
          if (findItem) {
             findItem.count--;

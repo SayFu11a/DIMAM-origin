@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { addItem } from '../../redux/slices/cartSlice';
 
-const typeNames = ['тонкое', 'традиционное'];
+// const typeNames = ['тонкое', 'традиционное'];
 
 function ClothingBlock({ title, price, id, imageUrl, types, sizes, category, rating }) {
    const dispatch = useDispatch();
@@ -19,7 +19,7 @@ function ClothingBlock({ title, price, id, imageUrl, types, sizes, category, rat
          title,
          price,
          imageUrl,
-         type: typeNames[activeType], // чтобы называл ввиде строчки
+         // type: typeNames[activeType], // чтобы называл ввиде строчки
          size: sizes[activeSize],
       };
       dispatch(addItem(item));

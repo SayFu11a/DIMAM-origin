@@ -4,24 +4,35 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { addItem, removeItem, minusItem } from '../redux/slices/cartSlice';
 
-const CartItem = ({ id, title, size, type, price, count, imageUrl }) => {
+const CartItem = ({ id, title, size, price, count, imageUrl }) => {
    const dispatch = useDispatch();
 
    const onClickPlus = () => {
       dispatch(
          addItem({
             id,
+            size, // update
          }),
       );
    };
 
    const onClickMinus = () => {
-      dispatch(minusItem(id));
+      dispatch(
+         minusItem({
+            id,
+            size, // update
+         }),
+      );
    };
 
    const onClickRemove = () => {
       if (window.confirm('Вы действительно хотите удалить товар?')) {
-         dispatch(removeItem(id));
+         dispatch(
+            removeItem({
+               id,
+               size, // update
+            }),
+         );
       }
    };
 
@@ -32,9 +43,7 @@ const CartItem = ({ id, title, size, type, price, count, imageUrl }) => {
          </div>
          <div className="cart__item-info">
             <h3>{title}</h3>
-            <p>
-               {type}, {size} см.
-            </p>
+            <p>{size} размер</p>
          </div>
          <div className="cart__item-count">
             <div
